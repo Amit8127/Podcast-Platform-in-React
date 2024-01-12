@@ -1,0 +1,41 @@
+.custome-input {
+    background: var(--theme);
+    color: var(--white);
+    border: 2px solid var(--purple-gray);
+    border-radius: 0.35rem;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 50vw;
+    font-weight: 500;
+    margin: 1rem;
+}
+
+.custome-input:focus {
+    outline: none;
+    border-color: var(--white);
+}
+
+.custome-input::placeholder {
+    color: var(--purple-gray);
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+#proPic::before {
+    content: 'Select Profile Picture';
+}
+
+#banPic::before {
+    content: 'Select Banner Picture';
+}
+
+.custom-file-input {
+    background: var(--theme);
+    color: var(--purple-gray);
+}
+
+.custom-file-input:hover {
+    cursor: pointer;
+}
