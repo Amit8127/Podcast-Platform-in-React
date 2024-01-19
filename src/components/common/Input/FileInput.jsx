@@ -4,7 +4,6 @@ import "./style.css";
 const FileInput = ({accept, id, fileHandleFun}) => {
 
     const onChange = (e) => {
-        console.log(e.target.files);
         fileHandleFun(e.target.files[0]);
     }
   return (

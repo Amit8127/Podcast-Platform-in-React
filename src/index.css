@@ -34,14 +34,8 @@ body {
   width: 80vw;
   display: block;
   margin: 0 auto;
-  margin-top: 4rem;
 }
 
-.form h1 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 2rem;
-}
 
 .podcast-flex {
   display: flex;
@@ -53,8 +47,8 @@ body {
 
 .bannerImg {
   background: linear-gradient(177.7deg,
-          rgba(58, 129, 191, 0.3) 1.63%,
-          rgba(65, 48, 90, 0.009)148.18%);
+      rgba(58, 129, 191, 0.3) 1.63%,
+      rgba(65, 48, 90, 0.009) 148.18%);
   border-radius: 1rem;
   padding: .8rem;
   height: 300px;
@@ -75,17 +69,39 @@ body {
 }
 
 .profilePic {
-  width: 200px;
+  width: 100%;
+  object-fit: cover;
   border-radius: 1rem;
 }
 
 .profile-flex {
   display: flex;
+  width: 300px;
+  margin-inline: auto;
+  padding: 1rem;
+  background: linear-gradient(177.7deg,
+      rgba(58, 129, 191, 0.3) 1.63%,
+      rgba(65, 48, 90, 0.009) 148.18%);
   justify-content: center;
-  gap: 2rem;
-  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 1rem;
 }
 
-.profileDetails h1 {
-  text-align: start;
+#heading {
+  color: #FFF;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.episode {
+  border: 1px solid #6c6b6b;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border-radius: .7rem;
 }

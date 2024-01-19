@@ -5,7 +5,7 @@ import { auth, db } from "../firebase";
 import { collection, doc, getDoc, onSnapshot, query } from "firebase/firestore";
 import { toast } from "react-toastify";
 import Button from "../components/common/Button/Button";
-import EpisodeDetails from "../components/podcasts/EpisodeDetails/EpisodeDetails";
+import EpisodeDetailsCard from "../components/podcasts/EpisodeDetails/EpisodeDetailsCard";
 import AudioPlayer from "../components/podcasts/AudioPlayer/AudioPlayer";
 
 const PodcastDetails = () => {
@@ -30,9 +30,7 @@ const PodcastDetails = () => {
 
       if (docSnap.exists()) {
         setPodcasts({ id: id, ...docSnap.data() });
-        toast.success("Podcast Found");
       } else {
-        console.log("No Podcast!");
         toast.error("No Podcast!");
         navigate("/podcasts");
       }
@@ -52,7 +50,6 @@ const PodcastDetails = () => {
         setEpisodes(episodesData);
       },
       (error) => {
-        console.error(error.message);
         toast.error(error.message);
       }
     );
@@ -75,7 +72,7 @@ const PodcastDetails = () => {
                 marginBottom: "20px",
               }}
             >
-              <h1 style={{ textAlign: "left", margin: "0" }}>
+              <h1  id="heading" style={{ textAlign: "left", margin: "0" }}>
                 {podcast.title}
               </h1>
               {podcast.createdBy == auth.currentUser.uid && (
@@ -94,12 +91,12 @@ const PodcastDetails = () => {
               <img src={podcast.bannerImage} alt="bannerImage" />
             </div>
             <p className="podcastDesc">{podcast.description}</p>
-            <h1 style={{ textAlign: "left", marginTop: "20px" }}>Episodes</h1>
+            <h1 id="heading" style={{ textAlign: "left", marginTop: "20px" }}>Episodes</h1>
             {episodes.length > 0 ? (
               <ol>
                 {episodes.map((episode, index) => {
                   return (
-                    <EpisodeDetails
+                    <EpisodeDetailsCard
                       key={index}
                       index={index + 1}
                       title={episode.title}

@@ -8,8 +8,11 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    background-color: rgba(14, 2, 21, 0.5);
+    background: linear-gradient(180deg,
+            rgba(58, 129, 191, 0.3) 1.63%,
+            rgba(65, 48, 90, 0.009) 108.18%);
 }
+
 
 .player-image {
     width: 50px;

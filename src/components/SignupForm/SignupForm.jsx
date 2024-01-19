@@ -33,7 +33,6 @@ const SignupForm = () => {
           password
         );
         const user = userCredential.user;
-        console.log(user);
 
         //Display image
         const displayImageRef = ref(
@@ -70,7 +69,6 @@ const SignupForm = () => {
         // after successfully signup we are redirecting to profile page..
         navigate("/profile");
       } catch (err) {
-        console.error(err);
         toast.error(err.message);
         setLoading(false);
       }
@@ -85,7 +83,7 @@ const SignupForm = () => {
       } else if (password.length < 6) {
         toast.error("Your password length should more then 6");
       } else {
-        toast.error("Your name and email should Empty");
+        toast.error("Your name and email can not be Empty");
       }
       setLoading(false);
     }
@@ -93,8 +91,6 @@ const SignupForm = () => {
 
   const displayImageHandleFun = (file) => {
     setDisplayImage(file);
-    console.log(displayImage);
-    toast.success("Display Image Selected");
   };
   return (
     <>

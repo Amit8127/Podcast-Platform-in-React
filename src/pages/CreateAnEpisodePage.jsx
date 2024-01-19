@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Header from "../components/common/Header/Header";
-import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Input from "../components/common/Input/Input";
 import FileInput from "../components/common/Input/FileInput";
@@ -16,17 +15,17 @@ const CreateAnEpisodePage = () => {
   const [desc, setDesc] = useState("");
   const [audioFile, setAudioFile] = useState();
   const [loading, setLoading] = useState(false);
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // function for audio file setting
   const audioFileHandleFun = (file) => {
     setAudioFile(file);
   };
 
+  // function for create episode page form
   const handleSubmit = async () => {
     setLoading(true);
-    if ((title, desc, audioFile, id)) {
+    if ((title, desc, audioFile, id)) { // checking all fields are filled
       try {
         const audioRef = ref(
           storage,
@@ -66,7 +65,7 @@ const CreateAnEpisodePage = () => {
     <div>
       <Header />
       <div className="form">
-        <h1>Create An Episode</h1>
+        <h1 id="heading">Create An Episode</h1>
         <Input
           state={title}
           setState={setTitle}

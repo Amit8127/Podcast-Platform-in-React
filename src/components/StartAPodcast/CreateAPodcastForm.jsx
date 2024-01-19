@@ -24,7 +24,6 @@ const CreateAPodcastForm = () => {
       setLoading(true);
       try {
         // Uplod file -> get download links
-
         //Display image
         const displayImageRef = ref(
           storage,
@@ -51,7 +50,6 @@ const CreateAPodcastForm = () => {
         };
 
         const docRef = await addDoc(collection(db, "podcasts"), podcastData);
-        console.log(docRef);
         setTitle("");
         setDesc("");
         setDisplayImage(null);
@@ -59,9 +57,9 @@ const CreateAPodcastForm = () => {
 
         toast.success("Podcast updated successfully");
         setLoading(false);
+        navigate("/podcasts");
       } catch (error) {
         toast.error(error.message);
-        console.log(error);
         setLoading(false);
       }
       // save this new podcast states in out podcast
@@ -73,14 +71,10 @@ const CreateAPodcastForm = () => {
 
   const displayImageHandleFun = (file) => {
     setDisplayImage(file);
-    console.log(displayImage);
-    toast.success("Display Image Selected");
   };
 
   const bannerImageHandleFun = (file) => {
     setBannerImage(file);
-    console.log(bannerImage);
-    toast.success("Banner Image Selected");
   };
 
   return (

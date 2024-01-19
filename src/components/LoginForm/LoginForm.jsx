@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const LoginForm = () => {
+  // All useState variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,9 +18,11 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // handleLogin function
   const handleLogin = async () => {
     setLoading(true);
 
+    //condetion check for login
     if (email && password) {
       try {
         const userCredential = await signInWithEmailAndPassword(
@@ -43,18 +46,21 @@ const LoginForm = () => {
         );
 
         toast.success("You have successfully Login");
-
         setLoading(false);
 
-        // // after successfully login we are redirecting to profile page..
+        // after successfully login we are redirecting to profile page..
         navigate("/profile");
       } catch (e) {
         toast.error(e.message);
         setLoading(false);
       }
     } else {
-        toast.error("Enter your Email and Password");
-        setLoading(false);
+      if(email) {
+        toast.error("Enter your Email!");
+      } else if(password) {
+        toast.error("Enter your Password!");
+      }
+      setLoading(false);
     }
   };
 

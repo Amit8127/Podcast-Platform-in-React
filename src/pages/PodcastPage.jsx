@@ -15,7 +15,6 @@ const PodcastPage = () => {
 
   const style = {
     width: '80vw',
-    marginTop: '40px',
     marginBottom: '40px',
   };
 
@@ -44,8 +43,7 @@ const PodcastPage = () => {
   return (
     <div>
       <Header />
-      <br />
-      <h1>Podcast Page</h1>
+      <h1 id="heading">Podcast Page</h1>
       <Input
         style={style}
         state={search}

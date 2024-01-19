@@ -10,15 +10,15 @@ const SignUp = () => {
     <div>
       <Header />
       <div className="form">
-        {!flag ? <h1>SignUp Page</h1> : <h1>LogIn Page</h1>}
+        {!flag ? <h1  id="heading">SignUp Page</h1> : <h1  id="heading">LogIn Page</h1>}
         {!flag ? <SignupForm /> : <LoginForm />}
         {!flag ? (
-          <p onClick={() => setFlag(!flag)}>
-            Already have an Account? Click here to <span>LogIn.</span>
+          <p style={{color: 'var(--purple-gray)', cursor: "pointer", marginTop: '3rem'}} onClick={() => setFlag(!flag)}>
+            Already have an Account? Click here to <span style={{color: 'var(--blue)', fontWeight: '500'}}>LogIn.</span>
           </p>
         ) : (
-          <p onClick={() => setFlag(!flag)}>
-            Don't have an Account? Click here to <span>SingUp.</span>
+          <p style={{color: 'var(--purple-gray)' , cursor: "pointer",  marginTop: '3rem'}} onClick={() => setFlag(!flag)}>
+            Don't have an Account? Click here to <span style={{color: 'var(--blue)', fontWeight: '500'}}>SingUp.</span>
           </p>
         )}
       </div>
