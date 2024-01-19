@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Input from "../Input/Input";
-import Button from "../Button/Button";
+import Input from "../common/Input/Input";
+import Button from "../common/Button/Button";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -8,12 +8,14 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../../slices/userSlice";
 import { toast } from "react-toastify";
+import FileInput from "../common/Input/FileInput";
 
 const SignupForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [displayImage, setDisplayImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -77,6 +79,11 @@ const SignupForm = () => {
     }
   };
 
+  const displayImageHandleFun = (file) => {
+    setDisplayImage(file);
+    console.log(displayImage);
+    toast.success("Display Image Selected");
+  };
   return (
     <>
       <Input
@@ -106,6 +113,11 @@ const SignupForm = () => {
         placeholder={"Confirm Password"}
         type="password"
         required={true}
+      />
+      <FileInput
+        accept={"image/*"}
+        id={"proPic"}
+        fileHandleFun={displayImageHandleFun}
       />
       <Button
         text={loading ? "Loading..." : "Sign Up"}

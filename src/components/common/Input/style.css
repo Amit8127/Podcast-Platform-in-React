@@ -31,6 +31,10 @@
     content: 'Select Banner Picture';
 }
 
+#audioFile::before {
+    content: 'Select Audio File';
+}
+
 .custom-file-input {
     background: var(--theme);
     color: var(--purple-gray);

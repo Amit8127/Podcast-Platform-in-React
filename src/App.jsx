@@ -12,6 +12,9 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { setUser } from "./slices/userSlice";
 import PrivateRoutes from "./components/PrivateRoutes";
 import CreateAPodcast from "./pages/CreateAPodcast";
+import PodcastPage from "./pages/PodcastPage";
+import PodcastDetails from "./pages/PodcastDetails";
+import CreateAnEpisodePage from "./pages/CreateAnEpisodePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,9 +57,15 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<SignUp />} />
-          <Route element={<PrivateRoutes/>}>
+          <Route element={<PrivateRoutes />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-a-podcast" element={<CreateAPodcast />} />
+            <Route path="/podcasts" element={<PodcastPage />} />
+            <Route path="/podcast/:id" element={<PodcastDetails />} />
+            <Route
+              path="/podcast/:id/create-episode"
+              element={<CreateAnEpisodePage />}
+            />
           </Route>
         </Routes>
       </Router>

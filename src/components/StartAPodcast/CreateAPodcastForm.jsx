@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
-import FileInput from "./../Input/FileInput";
+import Button from "../common/Button/Button";
+import Input from "../common/Input/Input";
+import FileInput from "../common/Input/FileInput";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { auth, db, storage } from "../../firebase";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 
 const CreateAPodcastForm = () => {
   const [title, setTitle] = useState("");

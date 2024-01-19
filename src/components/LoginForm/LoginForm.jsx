@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Input from "../Input/Input";
-import Button from "../Button/Button";
+import Input from "../common/Input/Input";
+import Button from "../common/Button/Button";
 import { getDoc, doc } from "firebase/firestore";
-import { auth, db, storage } from "../../firebase";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth, db } from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { setUser } from "../../slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";

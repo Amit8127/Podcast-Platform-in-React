@@ -1,9 +1,10 @@
 import React from "react";
 import './style.css';
 
-const Input = ({type, state, setState, placeholder, required}) => {
+const Input = ({style, type, state, setState, placeholder, required}) => {
   return (
     <input
+      style={style}
       type={type}
       value={state}
       onChange={(e) => setState(e.target.value)}

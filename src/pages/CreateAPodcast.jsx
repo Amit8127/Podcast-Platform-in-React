@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header/Header";
+import Header from "../components/common/Header/Header";
 import CreateAPodcastForm from "../components/StartAPodcast/CreateAPodcastForm";
 
 const CreateAPodcast = () => {

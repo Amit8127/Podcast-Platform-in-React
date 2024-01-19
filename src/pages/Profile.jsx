@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Header from "../components/Header/Header";
-import Button from "../components/Button/Button";
+import Header from "../components/common/Header/Header";
+import Button from "../components/common/Button/Button";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
+import Loader from "../components/common/Loader/Loader";
 
 const Profile = () => {
   const user = useSelector((state) => state.user.user);
@@ -20,7 +21,7 @@ const Profile = () => {
   };
 
   if (!user) {
-    return <p>Loading...</p>;
+    return <Loader/>;
   }
   return (
     <div>
