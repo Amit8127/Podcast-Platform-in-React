@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Input from "../common/Input/Input";
 import Button from "../common/Button/Button";
 import { setDoc, doc } from "firebase/firestore";
-import { auth, db } from "../../firebase";
+import { auth, db, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../../slices/userSlice";
 import { toast } from "react-toastify";
 import FileInput from "../common/Input/FileInput";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const SignupForm = () => {
   const [name, setName] = useState("");
@@ -33,11 +34,21 @@ const SignupForm = () => {
         );
         const user = userCredential.user;
         console.log(user);
+
+        //Display image
+        const displayImageRef = ref(
+          storage,
+          `podcasts/${auth.currentUser.uid}/${Date.now()}`
+        );
+        await uploadBytes(displayImageRef, displayImage);
+        const displayImageUrl = await getDownloadURL(displayImageRef);
+
         //Seving user's details.
         await setDoc(doc(db, "users", user.uid), {
           name: name,
           email: user.email,
           uid: user.uid,
+          profilePic: displayImageUrl,
         });
 
         //Save data in the redux, call the redux action
@@ -46,6 +57,7 @@ const SignupForm = () => {
             name: name,
             email: user.email,
             uid: user.uid,
+            profilePic: displayImageUrl,
           })
         );
 

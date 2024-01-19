@@ -73,3 +73,19 @@ body {
   margin-top: 20px;
   text-align: left;
 }
+
+.profilePic {
+  width: 200px;
+  border-radius: 1rem;
+}
+
+.profile-flex {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.profileDetails h1 {
+  text-align: start;
+}
