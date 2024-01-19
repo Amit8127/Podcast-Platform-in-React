@@ -55,10 +55,12 @@ const LoginForm = () => {
         setLoading(false);
       }
     } else {
-      if(email) {
+      if (!email) {
         toast.error("Enter your Email!");
-      } else if(password) {
+      } else if (!password) {
         toast.error("Enter your Password!");
+      } else {
+        toast.error("Enter your Email and Password!");
       }
       setLoading(false);
     }
