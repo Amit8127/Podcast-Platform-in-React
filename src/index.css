@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 :root {
-  --theme: #20062e;
-  --blue: #18b2de;
+  --theme: #020000;
+  --blue:#f8f85d;
   --white: #fff;
   --gray: #d7d7d7;
   --purple-gray: #8f8297;
@@ -43,6 +43,8 @@ body {
   align-items: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+  margin-inline: auto;
+  max-width: 85vw;
 }
 
 .bannerImg {
