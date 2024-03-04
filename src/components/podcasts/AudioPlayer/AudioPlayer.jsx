@@ -11,6 +11,7 @@ const AudioPlayer = ({ audioSrc, image }) => {
   const [volume, setVolume] = useState(1);
   const audioRef = useRef();
 
+  console.log(audioSrc);
   //   function for play duration handling
   const handleDuration = (e) => {
     setCurrentTime(e.target.value);
@@ -31,6 +32,30 @@ const AudioPlayer = ({ audioSrc, image }) => {
   //   for AudioPlayer playing timmimg function
   useEffect(() => {
     const audio = audioRef.current;
+    const playAudio = async () => {
+      try {
+        await audio.play();
+      } catch (error) {
+        // Handle the play error (e.g., autoplay policy)
+        console.error("Play error:", error);
+      }
+    };
+    if (isPlaying) {
+      // Check if the audio is ready before attempting to play
+      if (audio.readyState >= 2) {
+        playAudio();
+      } else {
+        // If not ready, set a listener for the 'loadeddata' event
+        const handleLoadedData = () => {
+          playAudio();
+          // Remove the event listener after the first 'loadeddata' event
+          audio.removeEventListener("loadeddata", handleLoadedData);
+        };
+        audio.addEventListener("loadeddata", handleLoadedData);
+      }
+    } else {
+      audio.pause();
+    }
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
     audio.addEventListener("ended", handleEnded);
@@ -40,7 +65,7 @@ const AudioPlayer = ({ audioSrc, image }) => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
       audio.removeEventListener("ended", handleEnded);
     };
-  }, []);
+  }, [isPlaying, audioSrc]);
 
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);
@@ -57,7 +82,7 @@ const AudioPlayer = ({ audioSrc, image }) => {
 
   //   for pause and play toggle button function
   const togglePlay = () => {
-    isPlaying ? setIsPlaying(false) : setIsPlaying(true);
+    setIsPlaying((prevState) => !prevState);
   };
 
   //   for mute and unmute toggle button function
